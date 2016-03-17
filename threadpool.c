@@ -119,14 +119,6 @@ void dispatch(threadpool* from_me, dispatch_fn dispatch_to_here, void *arg)
 		destroy_threadpool(from_me);
 	}
 	
-	/* if the parameter arg is NULL, the main can try again. for example for a server
-	it could be a socket that failed setting up and the next one might succeed */
-	if (!arg)
-	{
-		printf("Argument not assigned correctly\n");
-		return;
-	}
-	
 	//initializing the new work
 	work_t *new_work = (work_t*)calloc(1, sizeof(work_t));
 	if (!new_work) //if allocating memory was unsuccessful

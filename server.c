@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <threadpool.h>
+#include "threadpool.h"
 
 //macros
 #define FAILURE -1
@@ -809,16 +809,26 @@ char *get_mime_type(char *name)
 {
 	char *ext = strrchr(name, '.');
 	if (!ext) return NULL;
-	if (strcmp(ext, ".html") == 0 || strcmp(ext, ".htm") == 0) return "text/html";
-	if (strcmp(ext, ".jpg") == 0 || strcmp(ext, ".jpeg") == 0) return "image/jpeg";
-	if (strcmp(ext, ".gif") == 0) return "image/gif";
-	if (strcmp(ext, ".png") == 0) return "image/png";
-	if (strcmp(ext, ".css") == 0) return "text/css";
-	if (strcmp(ext, ".au") == 0) return "audio/basic";
-	if (strcmp(ext, ".wav") == 0) return "audio/wav";
-	if (strcmp(ext, ".avi") == 0) return "video/x-msvideo";
-	if (strcmp(ext, ".mpeg") == 0 || strcmp(ext, ".mpg") == 0) return "video/mpeg";
-	if (strcmp(ext, ".mp3") == 0) return "audio/mpeg";
+	if (!strcmp(ext, ".html") || !strcmp(ext, ".htm") || !strcmp(ext, ".txt")) 
+		return "text/html";
+	if (!strcmp(ext, ".jpg") || !strcmp(ext, ".jpeg")) 
+		return "image/jpeg";
+	if (!strcmp(ext, ".gif")) 
+		return "image/gif";
+	if (!strcmp(ext, ".png")) 
+		return "image/png";
+	if (!strcmp(ext, ".css")) 
+		return "text/css";
+	if (!strcmp(ext, ".au")) 
+		return "audio/basic";
+	if (!strcmp(ext, ".wav")) 
+		return "audio/wav";
+	if (!strcmp(ext, ".avi")) 
+		return "video/x-msvideo";
+	if (!strcmp(ext, ".mpeg") || !strcmp(ext, ".mpg") == 0) 
+		return "video/mpeg";
+	if (!strcmp(ext, ".mp3")) 
+		return "audio/mpeg";
 	return NULL;
 }
 

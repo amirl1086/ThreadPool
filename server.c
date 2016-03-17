@@ -1,7 +1,3 @@
-/* ======= Written by: Amir Lavi, ====== */
-/* === ID: 300202595, jce id: amirla === */
-/* ========= EX4 - server.c ======== */
-/* ===================================== */
 
 #include <stdio.h>
 #include <stdlib.h>
